@@ -27,4 +27,9 @@ public class BoardServiceImp implements BoardService {
 	public void increaseViews(Integer num) {
 		boardDao.increaseViews(num);		
 	}
+
+	@Override
+	public void registerBoard(BoardVo board) {
+		boardDao.registerBoard(board);
+	}
 }

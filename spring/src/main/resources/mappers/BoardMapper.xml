@@ -16,4 +16,9 @@
   		where
   			num = #{num}
   </update>
+  <insert id="registerBoard">
+  	insert into 
+  		board(title,writer,content)
+  		values(#{title},#{writer},#{content})
+  </insert>
 </mapper>

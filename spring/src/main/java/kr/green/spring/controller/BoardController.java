@@ -44,4 +44,18 @@ public class BoardController {
 		}
 		return mv;
 	}
+	@RequestMapping(value = "/board/register", method = RequestMethod.GET)
+	public ModelAndView boardregisterGet(ModelAndView mv) {
+		logger.info("URI:/board/register:GET");
+		mv.setViewName("/board/register");
+
+		return mv;
+	}
+	@RequestMapping(value = "/board/register", method = RequestMethod.POST)
+	public ModelAndView boardregisterPost(ModelAndView mv, BoardVo board) {
+		logger.info("URI:/board/register:POST");
+		mv.setViewName("redirect:/board/list");
+		boardService.registerBoard(board);
+		return mv;
+	}
 }
