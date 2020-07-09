@@ -9,4 +9,11 @@
   <select id="getBoard" resultType="kr.green.spring.vo.BoardVo">
     select * from board where num = #{num}
   </select>
+  <update id="increaseViews">
+  	update board
+  		set
+  			views = views+1
+  		where
+  			num = #{num}
+  </update>
 </mapper>

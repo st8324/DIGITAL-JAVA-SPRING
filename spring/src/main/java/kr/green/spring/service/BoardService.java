@@ -10,4 +10,6 @@ public interface BoardService {
 
 	BoardVo getBoard(Integer num);
 
+	void increaseViews(Integer num);
+
 }

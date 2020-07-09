@@ -22,4 +22,9 @@ public class BoardServiceImp implements BoardService {
 	public BoardVo getBoard(Integer num) {
 		return boardDao.getBoard(num);
 	}
+
+	@Override
+	public void increaseViews(Integer num) {
+		boardDao.increaseViews(num);		
+	}
 }
