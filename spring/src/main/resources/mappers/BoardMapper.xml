@@ -4,10 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.spring.dao.BoardDao">
   <select id="getBoardList" resultType="kr.green.spring.vo.BoardVo">
-    select * from board
+    select * 
+    	from board
+    	where isDel = 'N'
   </select>
   <select id="getBoard" resultType="kr.green.spring.vo.BoardVo">
-    select * from board where num = #{num}
+    select * 
+    	from board 
+    	where num = #{num} 
   </select>
   <update id="increaseViews">
   	update board
@@ -19,6 +23,16 @@
   <insert id="registerBoard">
   	insert into 
   		board(title,writer,content)
-  		values(#{title},#{writer},#{content})
+  		values(#{board.title},#{board.writer},#{board.content})
   </insert>
+  <update id="updateBoard">
+  	update board
+  		set
+  			title = #{board.title},
+  			content = #{board.content},
+  			isDel = #{board.isDel},
+  			delDate = #{board.delDate}
+  		where
+  			num = #{board.num}
+  </update>
 </mapper>

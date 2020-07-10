@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<form>
+<form method="post" action="<%=request.getContextPath()%>/board/modify">
 	<div class="form-group">
 		<label>게시글 번호</label>
 		<input type="text" class="form-control" name="num" value="${board.num}" readonly>
 	</div>
 	<div class="form-group">
 		<label>게시글 제목</label>
-		<input type="text" class="form-control" name="title" value="${board.title}" readonly>
+		<input type="text" class="form-control" name="title" value="${board.title}">
 	</div>
 	<div class="form-group">
 		<label>작성자</label>
@@ -25,9 +25,8 @@
 	</div>
 	<div class="form-group">
 		<label>내용</label>
-		<textarea class="form-control" rows="5" name="content" readonly>${board.content}</textarea>
+		<textarea class="form-control" rows="5" name="content">${board.content}</textarea>
 	</div>
+	<button>수정하기</button>
 </form>
 <a href="<%=request.getContextPath()%>/board/register"><button>글쓰기</button></a>
-<a href="<%=request.getContextPath()%>/board/modify?num=${board.num}"><button>수정</button></a>
-<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}"><button>삭제</button></a>
