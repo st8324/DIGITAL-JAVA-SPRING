@@ -26,8 +26,6 @@ public class HomeController {
 		logger.info("URI:/");
 		mv.setViewName("/main/home");
 		UserVo user = userService.isUser(inputUser);
-		System.out.println("입력" + inputUser.getId());
-		
 		mv.addObject("id",inputUser.getId());
 		
 		if(user == null) {
