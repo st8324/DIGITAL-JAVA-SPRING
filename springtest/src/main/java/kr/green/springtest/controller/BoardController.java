@@ -24,4 +24,23 @@ public class BoardController {
 		mv.addObject("list",list);
 		return mv;
 	}
+	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
+	public ModelAndView boardDetailGet(ModelAndView mv,Integer num) {
+		mv.setViewName("/board/detail");
+		BoardVo board = boardService.view(num);
+		mv.addObject("board", board);
+		return mv;
+	}
+	@RequestMapping(value = "/board/register", method = RequestMethod.GET)
+	public ModelAndView boardRegisterGet(ModelAndView mv) {
+		mv.setViewName("/board/register");
+		
+		return mv;
+	}
+	@RequestMapping(value = "/board/register", method = RequestMethod.POST)
+	public ModelAndView boardRegisterPost(ModelAndView mv,BoardVo board) {
+		mv.setViewName("redirect:/board/list");
+		boardService.insertBoard(board);
+		return mv;
+	}
 }
