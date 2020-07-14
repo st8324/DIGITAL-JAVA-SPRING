@@ -43,4 +43,18 @@ public class BoardController {
 		boardService.insertBoard(board);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/board/modify", method = RequestMethod.GET)
+	public ModelAndView boardModifyGet(ModelAndView mv, Integer num) {
+		mv.setViewName("/board/modify");
+		BoardVo board = boardService.getBoard(num);
+		mv.addObject("board",board);
+		return mv;
+	}
+	@RequestMapping(value = "/board/modify", method = RequestMethod.POST)
+	public ModelAndView boardModifyGet(ModelAndView mv, BoardVo board) {
+		mv.setViewName("redirect:/board/list");
+		boardService.updateBoard(board);
+		return mv;
+	}
 }

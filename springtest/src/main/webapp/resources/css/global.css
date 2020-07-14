@@ -21,3 +21,36 @@
 .container.body table{
 	margin-top: 20px;	
 }
+.board-header.detail{
+	height: 50px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	padding: 0 20px;
+}
+.board-title.detail{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	padding: 0 20px;
+}
+.board-content.detail{
+	min-height: 300px;
+	line-height: 50px;
+	font-size: 20px;
+	padding: 0 20px;
+	margin-top: 50px;
+}
+.board-content.detail>.modify{
+	min-height:300px;
+}
+.btn-groups{
+	margin-right:20px
+}
+.board-header.detail>input{
+	height:48px;
+	box-sizing: border-box;
+}
