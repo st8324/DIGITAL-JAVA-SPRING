@@ -27,11 +27,9 @@ public class BoardController {
 		logger.info("URI:/board/list");
 		mv.setViewName("/board/list");
 		PageMaker pm = boardService.getPageMaker(cri);
-		ArrayList<BoardVo> list;
-		list = boardService.getBoardList(cri);
+		ArrayList<BoardVo> list = boardService.getBoardList(cri);
 		mv.addObject("list", list);
 		mv.addObject("pm", pm);
-		System.out.println(cri);
 		return mv;
 	}
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
