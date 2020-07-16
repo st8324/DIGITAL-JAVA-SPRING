@@ -27,12 +27,26 @@
 </table>
 <ul class="pagination justify-content-center">
 	<c:if test="${pm.prev}"> 	
-		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.startPage-1}">Previous</a></li>
+		<li class="page-item">
+			<a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.startPage-1}">
+				<i class="fas fa-angle-double-left"></i>
+			</a>
+		</li>
+	</c:if>
+	<c:if test="${pm.criteria.page != 1}"> 	
+		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.criteria.page-1}"><i class="fas fa-chevron-left"></i></a></li>
 	</c:if>
 	<c:forEach var="index" begin="${pm.startPage}" end="${pm.endPage}">
 		<li class="page-item <c:if test="${index == pm.criteria.page}">active</c:if>"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${index}">${index}</a></li>
 	</c:forEach>
+	<c:if test="${pm.criteria.page != pm.lastEndPage}">
+		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.criteria.page+1}"><i class="fas fa-chevron-right"></i></a></li>
+	</c:if>
 	<c:if test="${pm.next}">
-		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.endPage+1}">Next</a></li>
+		<li class="page-item">
+			<a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.endPage+1}">
+				<i class="fas fa-angle-double-right"></i>
+			</a>
+		</li>
 	</c:if>
 </ul> 

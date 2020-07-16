@@ -31,7 +31,6 @@ public class BoardController {
 		list = boardService.getBoardList(cri);
 		mv.addObject("list", list);
 		mv.addObject("pm", pm);
-		System.out.println(pm);
 		return mv;
 	}
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
