@@ -40,7 +40,7 @@ public class HomeController {
 		if(userService.signup(user)) {
 			mv.setViewName("redirect:/");
 		}else {
-			mv.setViewName("redirect:/main/signup");
+			mv.setViewName("redirect:/signup");
 			mv.addObject("user",user);
 		}
 		
