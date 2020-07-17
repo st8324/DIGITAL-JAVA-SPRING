@@ -7,7 +7,22 @@
   	select * 
   		from board 
   		where isDel = 'N'
-  		order by num desc limit 0, 10
+  		<if test="cri.type == 0">
+  			and (writer like concat('%',#{cri.search},'%')
+  			or title like concat('%',#{cri.search},'%')
+  			or content like concat('%',#{cri.search},'%'))
+  		</if>
+  		<if test="cri.type == 1">
+  			and writer like concat('%',#{cri.search},'%')
+  		</if>
+  		<if test="cri.type == 2">
+  			and title like concat('%',#{cri.search},'%')
+  		</if>
+  		<if test="cri.type == 3">
+  			and content like concat('%',#{cri.search},'%')
+  		</if>
+  		order by num desc 
+  		limit #{cri.startPage}, #{cri.perPageNum}
   </select>
   <select id="getBoard" resultType="kr.green.springtest.vo.BoardVo">
   	select *
@@ -30,4 +45,23 @@
   		where
   			num = #{board.num}
   </update>
+  <select id="getTotalCountByBoard" resultType="int">
+  	select count(*)
+  		from board
+  		where isDel = 'N'
+  		<if test="cri.type == 0">
+  			and (writer like concat('%',#{cri.search},'%')
+  			or title like concat('%',#{cri.search},'%')
+  			or content like concat('%',#{cri.search},'%'))
+  		</if>
+  		<if test="cri.type == 1">
+  			and writer like concat('%',#{cri.search},'%')
+  		</if>
+  		<if test="cri.type == 2">
+  			and title like concat('%',#{cri.search},'%')
+  		</if>
+  		<if test="cri.type == 3">
+  			and content like concat('%',#{cri.search},'%')
+  		</if>
+  </select>
 </mapper>
