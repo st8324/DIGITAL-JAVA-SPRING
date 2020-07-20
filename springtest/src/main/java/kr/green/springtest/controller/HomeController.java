@@ -33,4 +33,21 @@ public class HomeController {
 		}
 		return mv;
 	}
+	@RequestMapping(value = "/user/signup", method = RequestMethod.GET)
+	public ModelAndView signupGet(ModelAndView mv) {
+		logger.info("URI:/signup:GET");
+		mv.setViewName("/main/signup");
+		return mv;
+	}
+	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
+	public ModelAndView signupPost(ModelAndView mv,UserVo user) {
+		logger.info("URI:/signup:POST");
+		if(userService.signup(user)) {
+			mv.setViewName("redirect:/");
+		}else {
+			mv.setViewName("redirect:/user/signup");
+		}
+		
+		return mv;
+	}
 }

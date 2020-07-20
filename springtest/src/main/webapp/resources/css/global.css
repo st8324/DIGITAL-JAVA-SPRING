@@ -54,3 +54,128 @@
 	height:48px;
 	box-sizing: border-box;
 }
+.text-id, 
+.text-pw, 
+.text-name,
+.text-birth,
+.text-gender,
+.text-bold{
+	font-weight: bold;
+}
+.text-small{
+	font-size: 14px;
+	color: gray;
+}
+.box-id, 
+.box-pw, 
+.box-name,
+.box-year,
+.box-month,
+.box-day,
+.box-gender,
+.box-email,
+.box-country,
+.box-certification,
+.box-number-in{
+	height: 50px;
+	border: rgb(218, 218, 218) 1px solid;
+	background-color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.box-certification{
+	background-color: rgb(245, 246, 247);
+}
+.box-month,
+.box-day,
+.box-year{
+	float: left;
+	width: calc((100% - 20px) / 3);
+	box-sizing: border-box;
+}
+.box-year,
+.box-month{
+	margin-right: 10px;
+}
+.box-number-in{
+	width: calc(100% - 150px - 10px);
+	float: left;
+}
+.box-number::after{
+	clear: both;
+	content: '';
+	display: block;
+}
+.box-id>input, 
+.box-name>input{
+	height: 28px;
+	width: calc(100% - 96px);
+	border: none;
+}
+.box-id>label{
+	line-height: 28px;
+}
+.box-pw>input{
+	height: 28px;
+	width: calc(100% - 38px);
+	border: none;
+}
+.box-pw>a{
+	display: block;
+	float: right;
+	width: 28px;
+	height: 28px;
+	border: 1px solid black;
+	background-color: #fff;
+	cursor: pointer;
+}
+.box-name>input{
+	width: 100%;
+}
+.box-year>input,
+.box-day>input,
+.box-month>select,
+.box-gender>select,
+.box-email>input,
+.box-country>select,
+.box-certification>input,
+.box-number-in>input{
+	width: 100%;
+	height: 28px;
+	border: none;
+}
+.btn-certification{
+	height: 50px;
+	background-color: rgb(0, 200, 80);
+	border: none;
+	width: 150px;
+	display: block;
+	margin-top: 10px;
+	float: left;
+	margin-left: 10px;
+	line-height: 50px;
+	color: #fff;
+	font-weight: bold;
+}
+.btn-submit{
+	width: 100%;
+	display: block;
+	background-color: rgb(0, 200, 80);
+	color: #fff;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+	font-size: 24px;
+	border: none;
+}
+.logo{
+	text-align: center;
+	margin-top: 20px;
+}
+.logo>a{
+	color: rgb(0, 200, 80);
+	font-size: 50px;
+	font-weight: 900;
+}
