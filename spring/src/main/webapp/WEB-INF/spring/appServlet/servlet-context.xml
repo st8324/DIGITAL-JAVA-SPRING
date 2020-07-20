@@ -23,18 +23,34 @@
 	
 	<context:component-scan base-package="kr.green.spring.*" />
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
-    <beans:property name="order" value="1" /><!-- 순서를 우선으로 지정 -->
-</beans:bean>
+	    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	    <beans:property name="order" value="1" /><!-- 순서를 우선으로 지정 -->
+	</beans:bean>
      
-<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-    <beans:property name="definitions">
-        <beans:list>
-            <beans:value>/WEB-INF/spring/tiles-def.xml</beans:value>
-        </beans:list>
-    </beans:property>
-</beans:bean>
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	    <beans:property name="definitions">
+	        <beans:list>
+	            <beans:value>/WEB-INF/spring/tiles-def.xml</beans:value>
+	        </beans:list>
+	    </beans:property>
+	</beans:bean>
 
-	
+	<beans:bean id="loginInterceptor" 
+		class="kr.green.spring.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" 
+		class="kr.green.spring.interceptor.AuthInterceptor"></beans:bean>
+		
+	<interceptors>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+	        <mapping path="/board/register"/>
+	        <mapping path="/board/modify"/>
+	        <mapping path="/board/delete"/>
+	        <beans:ref bean="authInterceptor"/>
+	    </interceptor>
+	</interceptors>
 	
 </beans:beans>
