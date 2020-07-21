@@ -1,5 +1,7 @@
 package kr.green.springtest.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,9 @@ public class HomeController {
 		logger.info("URI:/");
 		mv.setViewName("/main/home");
 		UserVo user = userService.isUser(inputUser);
-		mv.addObject("id",inputUser.getId());
-		
-		if(user == null) {
-			mv.addObject("isLogin", false);
+		if(user != null) {
+			mv.setViewName("redirect:/board/list");
+			mv.addObject("user",user);
 		}
 		return mv;
 	}
@@ -48,6 +49,13 @@ public class HomeController {
 			mv.setViewName("redirect:/user/signup");
 		}
 		
+		return mv;
+	}
+	@RequestMapping(value = "/user/signout", method = RequestMethod.GET)
+	public ModelAndView signoutGet(ModelAndView mv,HttpServletRequest request) {
+		logger.info("URI:/signout:GET");
+		mv.setViewName("redirect:/");
+		request.getSession().removeAttribute("user");
 		return mv;
 	}
 }

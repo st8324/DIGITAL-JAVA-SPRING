@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <form method="post" action="<%=request.getContextPath()%>/board/register">
 	<div class="board-header detail form-group">
-		<input class="form-control" name="writer" placeholder="작성자">
+
 	</div>
 	<div class="board-title detail form-group">
 		<input class="form-control" name="title" placeholder="제목">

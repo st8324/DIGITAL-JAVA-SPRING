@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:if test="${user == null}"> 
 <h1 class="text-header">
 	로그인
 </h1>
@@ -15,6 +16,7 @@
 </form>
 <input type="hidden" value="${isLogin }" id="isLogin">
 <input type="hidden" value="${id}" id="id">
+</c:if>
 <script type="text/javascript">
 	$(function(){
 		var id = $('#id').val();

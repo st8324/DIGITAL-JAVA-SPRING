@@ -18,9 +18,13 @@
 		<div class="board-content detail">${board.content}</div>
 		<div class="float-right">
 			<a href="<%=request.getContextPath()%>/board/list?page=${cri.page}&search=${cri.search}&type=${cri.type}"><button class="btn btn-outline-success">목록</button></a>
-			<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-outline-success">등록</button></a>
-			<a href="<%=request.getContextPath()%>/board/modify?num=${board.num}"><button class="btn btn-outline-success">수정</button></a>
-			<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}"><button class="btn btn-outline-success">삭제</button></a>
+			<c:if test="${user != null }">
+				<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-outline-success">등록</button></a>
+				<c:if test="${user.id == board.writer}">
+					<a href="<%=request.getContextPath()%>/board/modify?num=${board.num}"><button class="btn btn-outline-success">수정</button></a>
+					<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}"><button class="btn btn-outline-success">삭제</button></a>
+				</c:if>
+			</c:if>
 		</div>
 	</c:if>
 </c:if>
