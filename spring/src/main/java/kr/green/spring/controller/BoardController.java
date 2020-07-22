@@ -1,6 +1,8 @@
 package kr.green.spring.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.spring.pagination.Criteria;
@@ -100,5 +104,19 @@ public class BoardController {
 		boardService.deleteBoard(num, userService.getUser(request));
 		
 		return mv;
+	}
+	@RequestMapping(value = "/board/like")
+	@ResponseBody
+	public Map<Object, Object> boardLike(@RequestBody String num,HttpServletRequest r){
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+	    UserVo user = userService.getUser(r);
+	    if(user == null) {
+	    	map.put("isUser", false);
+	    }else {
+	    	map.put("isUser", true);
+	    	int like = boardService.updateLike(num,user.getId());
+	    	map.put("like", like);
+	    }
+	    return map;
 	}
 }
