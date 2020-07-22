@@ -11,6 +11,8 @@
 		<div class="box-id">
 			<input type="text" name="id" id="id">
 		</div>
+		<div class="dup-fail-msg display-none">이미 사용중이거나 탈퇴한 아이디입니다.</div>
+		<div class="dup-suc-msg display-none">멋진 아이디네요.!!</div>
 	</div>
 	<div class="container-pw">
 		<div class="text-pw">비밀번호</div>
@@ -45,3 +47,28 @@
 	<button class="btn-submit">가입하기</button>
 </div>
 </form>
+<script>
+	$(function(){
+		$('#id').change(function(){
+			var id = $(this).val();
+			$.ajax({
+		        async:true,
+		        type:'POST',
+		        data:id,
+		        url:"<%=request.getContextPath()%>/idCheck",
+		        dataType:"json",
+		        contentType:"application/json; charset=UTF-8",
+		        success : function(data){
+			        if(data['check']){
+				        $('.dup-suc-msg').removeClass('display-none')
+				        $('.dup-fail-msg').addClass('display-none')
+				    }else{
+				    	$('.dup-suc-msg').addClass('display-none')
+				        $('.dup-fail-msg').removeClass('display-none')
+					}
+		            
+		        }
+		    });
+		})
+	})
+</script>
