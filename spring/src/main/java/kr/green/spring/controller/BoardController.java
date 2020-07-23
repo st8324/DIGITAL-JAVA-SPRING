@@ -143,6 +143,7 @@ public class BoardController {
 	    ResponseEntity<byte[]> entity = null;
 	    try{
 	        HttpHeaders headers = new HttpHeaders();
+	        System.out.println(uploadPath+fileName);
 	        in = new FileInputStream(uploadPath+fileName);
 
 	        fileName = fileName.substring(fileName.indexOf("_")+1);
