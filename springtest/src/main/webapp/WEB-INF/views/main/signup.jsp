@@ -12,6 +12,7 @@
 			<input type="text" name="id" id="id">
 		</div>
 	</div>
+	<div class="id-msg"></div>
 	<div class="container-pw">
 		<div class="text-pw">비밀번호</div>
 		<div class="box-pw">
@@ -45,3 +46,29 @@
 	<button class="btn-submit">가입하기</button>
 </div>
 </form>
+<script>
+	$(function(){
+		$('input[name=id]').change(function(){
+			var id = $(this).val();
+			$.ajax({
+		        async:true,
+		        type:'POST',
+		        data:id,
+		        url:"<%=request.getContextPath()%>/idCheck",
+		        dataType:"json",
+		        contentType:"application/json; charset=UTF-8",
+		        success : function(data){
+			        var str;
+		            if(data['res']){
+			            str = 
+				        '<p style="color:green;">사용 가능한 아아디입니다.</p>'
+		            }else{
+		            	str = 
+				        '<p style="color:red;">이미 가입되있거나 탈퇴한 아이디입니다.</p>'
+		            }
+		            $('.id-msg').html(str);
+		        }
+		    });
+		})
+	})
+</script>
