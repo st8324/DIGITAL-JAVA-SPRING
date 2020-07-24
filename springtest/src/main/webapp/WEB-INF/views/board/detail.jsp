@@ -18,6 +18,9 @@
 		</div>
 		<div class="board-title detail">${board.title}</div>
 		<div class="board-content detail">${board.content}</div>
+		<c:if test="${board.file != null }">
+			<a href="<%=request.getContextPath()%>/board/download?fileName=${board.file}">${board.oriFile}</a>
+		</c:if>
 		<div class="float-right">
 			<a href="<%=request.getContextPath()%>/board/list?page=${cri.page}&search=${cri.search}&type=${cri.type}"><button class="btn btn-outline-success">목록</button></a>
 			<c:if test="${user != null }">
