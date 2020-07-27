@@ -183,3 +183,6 @@
 	
 	line-height: 50px
 }
+label.error{
+	color: red;
+}
